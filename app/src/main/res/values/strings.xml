@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">ecommerce_app</string>
+    <!-- TODO: Remove or change this placeholder text -->
+
+    <string name="changeLanguage">Change Language</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+
+</resources>
