@@ -13,6 +13,9 @@
         android:theme="@style/Theme.Ecommerce_app"
         tools:targetApi="31">
         <activity
+            android:name=".bottomnavbar.LanguageActivity"
+            android:exported="false" />
+        <activity
             android:name=".bottomnavbar.MainActivity"
             android:exported="true">
             <intent-filter>

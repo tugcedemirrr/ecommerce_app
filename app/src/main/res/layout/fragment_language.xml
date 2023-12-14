@@ -3,17 +3,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".bottomnavbar.fragments.SettingsFragment">
+    tools:context=".bottomnavbar.fragments.LanguageFragment">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-    >
+        android:layout_height="match_parent">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-        >
+            >
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -21,8 +20,9 @@
                 android:textStyle="bold"
                 android:padding="25sp"
                 android:textAlignment="center"
-                android:text="Settings"
-            />
+                android:text="@string/changeLanguage"
+
+                />
 
             <ScrollView
                 android:layout_width="match_parent"
@@ -42,22 +42,41 @@
                         android:layout_gravity="center_vertical"
                     >
                         <TextView
-                            android:id="@+id/goToLanguageFragment"
+                            android:id="@+id/set_english"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:gravity="center_vertical"
-                            android:text="@string/changeLanguage"
+                            android:text="@string/english"
                             android:textSize="20sp"
-
                         />
-
-
                     </LinearLayout>
 
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="45sp"
+                        android:orientation="horizontal"
+                        android:layout_gravity="center_vertical"
+                    >
+                        <TextView
+                            android:id="@+id/set_dutch"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:text="@string/dutch"
+                            android:textSize="20sp"
+                        />
+                    </LinearLayout>
                 </LinearLayout>
             </ScrollView>
         </LinearLayout>
     </RelativeLayout>
 
 </FrameLayout>
+
+
+
+
+
+

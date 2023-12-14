@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">ecommerce_app</string>
-    <!-- TODO: Remove or change this placeholder text -->
-
     <string name="changeLanguage">Taal Wijzigen</string>
     <string name="email">Email</string>
     <string name="password">Wachtwoord</string>
+    <string name="english">Engels</string>
+    <string name="dutch">Nederlands</string>
+
+
 </resources>

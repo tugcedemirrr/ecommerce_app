@@ -1,10 +1,13 @@
 package com.example.ecommerce_app.bottomnavbar.fragments
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
+import android.widget.Toast
 import com.example.ecommerce_app.R
 
 // TODO: Rename parameter arguments, choose names that match
@@ -18,16 +21,10 @@ private const val ARG_PARAM2 = "param2"
  * create an instance of this fragment.
  */
 class SettingsFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
+
     }
 
     override fun onCreateView(
@@ -35,7 +32,23 @@ class SettingsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_settings, container, false)
+        val rootView = inflater.inflate(R.layout.fragment_settings, container, false)
+        val change_language = rootView.findViewById<View>(R.id.goToLanguageFragment) as TextView
+        /*val change_theme = rootView.findViewById<View>(R.id.goToThemeFragment) as TextView */
+        change_language.setOnClickListener {
+            createFragment(LanguageFragment())
+        }
+        /*change_theme.setOnClickListener {
+            createFragment(ThemeFragment())
+        }*/
+        return rootView
+    }
+
+    private fun createFragment(fragment: Fragment){
+        val transaction = parentFragmentManager.beginTransaction()
+        transaction.replace(R.id.fl_wrapper, fragment)
+        transaction.disallowAddToBackStack()
+        transaction.commit()
     }
 
     companion object {
