@@ -14,27 +14,7 @@ class LanguageActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_language)
 
-        /*val bottomNav = findViewById<BottomNavigationView>(R.id.goToLanguageFragment)
-        bottomNav.setOnNavigationItemSelectedListener(navListener)
-
-        // as soon as the application opens the first fragment should
-        // be shown to the user in this case it is algorithm fragment
-        supportFragmentManager.beginTransaction().replace(R.id.fl_wrapper, HomeFragment()).commit()
-*/
     }
 
-    private fun loadFragment(fragment: Fragment){
-        val transaction = supportFragmentManager.beginTransaction()
-        transaction.replace(R.id.fl_wrapper,fragment)
-        transaction.disallowAddToBackStack()
-        transaction.commit()
 
-        val textView = findViewById<TextView>(R.id.goToLanguageFragment)
-        textView.setOnClickListener{
-            val fragment = LanguageFragment()
-            loadFragment(fragment)
-        }
-
-
-    }
 }

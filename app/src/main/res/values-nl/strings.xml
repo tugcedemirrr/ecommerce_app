@@ -6,6 +6,14 @@
     <string name="password">Wachtwoord</string>
     <string name="english">Engels</string>
     <string name="dutch">Nederlands</string>
-
-
+    <string name="register">Registreer</string>
+    <string name="login">Log in</string>
+    <string name="username">Gebruikersnaam</string>
+    <string name="welcome">Welkom</string>
+    <string name="make_account">Maak een account!</string>
+    <string name="settings">Instellingen</string>
+    <string name="change_theme">Wijzig Thema</string>
+    <string name="light_mode">Lichte Modus</string>
+    <string name="dark_mode">Donkere Modus</string>
+    <string name="log_out">Log Uit</string>
 </resources>

@@ -8,23 +8,35 @@ import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.lifecycleScope
+import androidx.room.Room
 import com.example.ecommerce_app.R
 import com.example.ecommerce_app.bottomnavbar.fragments.FavouritesFragment
 import com.example.ecommerce_app.bottomnavbar.fragments.HomeFragment
 import com.example.ecommerce_app.bottomnavbar.fragments.LanguageFragment
 import com.example.ecommerce_app.bottomnavbar.fragments.SettingsFragment
+import com.example.ecommerce_app.database.AppDatabase
+import com.example.ecommerce_app.database.User
+import com.example.ecommerce_app.model.UserViewModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Dispatchers.IO
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.withContext
 import java.util.Locale
 
 
+
 class MainActivity : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        Log.i(TAG,"hallo")
+
         setContentView(R.layout.activity_main)
-
-
 
 
         val bottomNav = findViewById<BottomNavigationView>(R.id.bottom_navigation)
@@ -94,8 +106,5 @@ class MainActivity : AppCompatActivity() {
             /*val languageFragment = LanguageFragment()
             replaceFragment(languageFragment) */
         }
-
     }
-
-
 }

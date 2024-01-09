@@ -21,7 +21,7 @@
                 android:textStyle="bold"
                 android:padding="25sp"
                 android:textAlignment="center"
-                android:text="Settings"
+                android:text="@string/settings"
             />
 
             <ScrollView
@@ -49,12 +49,41 @@
                             android:gravity="center_vertical"
                             android:text="@string/changeLanguage"
                             android:textSize="20sp"
-
                         />
-
-
                     </LinearLayout>
-
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="45sp"
+                        android:orientation="horizontal"
+                        android:layout_gravity="center_vertical"
+                        >
+                        <TextView
+                            android:id="@+id/goToThemeFragment"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:text="@string/change_theme"
+                            android:textSize="20sp"
+                        />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="45sp"
+                        android:orientation="horizontal"
+                        android:layout_gravity="center_vertical"
+                        >
+                        <TextView
+                            android:id="@+id/goToHomeFragment"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:text="@string/log_out"
+                            android:textStyle="bold"
+                            android:textSize="20sp"
+                        />
+                    </LinearLayout>
                 </LinearLayout>
             </ScrollView>
         </LinearLayout>

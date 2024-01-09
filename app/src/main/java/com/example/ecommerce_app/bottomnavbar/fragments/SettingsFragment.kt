@@ -8,7 +8,16 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
+import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.lifecycleScope
 import com.example.ecommerce_app.R
+import com.example.ecommerce_app.database.AppDatabase
+import com.example.ecommerce_app.database.User
+import com.example.ecommerce_app.database.UserDao
+import com.example.ecommerce_app.model.UserViewModel
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -21,6 +30,9 @@ private const val ARG_PARAM2 = "param2"
  * create an instance of this fragment.
  */
 class SettingsFragment : Fragment() {
+    private val sharedViewModel : UserViewModel by activityViewModels()
+    private lateinit var dao: UserDao
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,16 +43,31 @@ class SettingsFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        dao = AppDatabase.getInstance(requireActivity().applicationContext).getUserDao()
+
         // Inflate the layout for this fragment
         val rootView = inflater.inflate(R.layout.fragment_settings, container, false)
         val change_language = rootView.findViewById<View>(R.id.goToLanguageFragment) as TextView
-        /*val change_theme = rootView.findViewById<View>(R.id.goToThemeFragment) as TextView */
+        val change_theme = rootView.findViewById<View>(R.id.goToThemeFragment) as TextView
+        val log_out = rootView.findViewById<View>(R.id.goToHomeFragment) as TextView
         change_language.setOnClickListener {
             createFragment(LanguageFragment())
         }
-        /*change_theme.setOnClickListener {
+        change_theme.setOnClickListener {
             createFragment(ThemeFragment())
-        }*/
+        }
+        log_out.setOnClickListener {
+            lifecycleScope.launch {
+                withContext(Dispatchers.IO) {
+                    val user = dao.getUser()
+                    if (user != null) {
+                        dao.delete(user)
+                    }
+                }
+                sharedViewModel.setUsername("")
+                createFragment(HomeFragment())
+            }
+        }
         return rootView
     }
 

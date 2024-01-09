@@ -42,14 +42,14 @@ class LanguageFragment : Fragment() {
             val locale = Locale("nl" , "NL")
             val configuration = Configuration()
             configuration.setLocale(locale)
-            //resources.configuration.locale = locale
+            resources.configuration.locale = locale
             val transaction = parentFragmentManager.beginTransaction()
             transaction.replace(R.id.fl_wrapper, LanguageFragment.newInstance())
             transaction.disallowAddToBackStack()
             transaction.commit()
         }
+        Toast.makeText(activity,"english",Toast.LENGTH_SHORT).show();
         set_en.setOnClickListener {
-            Toast.makeText(activity,"english",Toast.LENGTH_SHORT).show();
         }
         return rootView
     }
