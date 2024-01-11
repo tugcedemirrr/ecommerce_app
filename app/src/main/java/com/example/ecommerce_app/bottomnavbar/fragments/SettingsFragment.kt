@@ -19,51 +19,49 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [SettingsFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class SettingsFragment : Fragment() {
     private val sharedViewModel : UserViewModel by activityViewModels()
     private lateinit var dao: UserDao
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        // Initialiseren van UserDao met de applicationDatabase
         dao = AppDatabase.getInstance(requireActivity().applicationContext).getUserDao()
 
         // Inflate the layout for this fragment
         val rootView = inflater.inflate(R.layout.fragment_settings, container, false)
+        // Elementen vinden in layout
         val change_language = rootView.findViewById<View>(R.id.goToLanguageFragment) as TextView
         val change_theme = rootView.findViewById<View>(R.id.goToThemeFragment) as TextView
         val log_out = rootView.findViewById<View>(R.id.goToHomeFragment) as TextView
+        // OnclickListeners toevoegen aan elementen
         change_language.setOnClickListener {
             createFragment(LanguageFragment())
         }
         change_theme.setOnClickListener {
             createFragment(ThemeFragment())
         }
+
         log_out.setOnClickListener {
+            // Gebruiken van coroutines om IO-bewerkingen uit te voeren
             lifecycleScope.launch {
                 withContext(Dispatchers.IO) {
+                    // Haal de huidige gebruiker op en verwijder deze uit de lokale database
                     val user = dao.getUser()
                     if (user != null) {
                         dao.delete(user)
                     }
                 }
+                // Stel de gebruikersnaam in op een lege string en navigeer naar het HomeFragment
                 sharedViewModel.setUsername("")
                 createFragment(HomeFragment())
             }
@@ -71,6 +69,7 @@ class SettingsFragment : Fragment() {
         return rootView
     }
 
+    // Hulpmethode om een nieuw fragment te maken en weer te geven
     private fun createFragment(fragment: Fragment){
         val transaction = parentFragmentManager.beginTransaction()
         transaction.replace(R.id.fl_wrapper, fragment)
@@ -79,15 +78,6 @@ class SettingsFragment : Fragment() {
     }
 
     companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment SettingsFragment.
-         */
-        // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
             SettingsFragment().apply {

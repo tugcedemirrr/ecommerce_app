@@ -16,6 +16,9 @@
             android:name=".bottomnavbar.LanguageActivity"
             android:exported="false" />
         <activity
+            android:name=".bottomnavbar.CatalogActivity"
+            android:exported="false" />
+        <activity
             android:name=".bottomnavbar.MainActivity"
             android:exported="true">
             <intent-filter>

@@ -54,4 +54,6 @@
         app:itemTextColor="#fff"
         app:menu="@menu/nav_menu"
     />
+
+
 </RelativeLayout>

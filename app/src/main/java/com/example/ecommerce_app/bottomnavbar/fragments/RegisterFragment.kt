@@ -22,11 +22,6 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import services.PasswordEncoder
 
-/**
- * A simple [Fragment] subclass.
- * Use the [RegisterFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class RegisterFragment : Fragment() {
     private val sharedViewModel : UserViewModel by activityViewModels()
     private lateinit var usersDao: UsersDao
@@ -34,35 +29,42 @@ class RegisterFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        // Initialiseren van UsersDao met de applicationDatabase
         usersDao = AppDatabase.getInstance(requireActivity().applicationContext).getUsersDao()
 
+        // Elementen vinden van layout
         val rootView = inflater.inflate(R.layout.fragment_register, container, false)
         val register_button = rootView.findViewById<Button>(R.id.registerButton)
         val username_input = rootView.findViewById<EditText>(R.id.username)
         val password_input = rootView.findViewById<EditText>(R.id.password)
         val password2_input = rootView.findViewById<EditText>(R.id.password2)
+
         register_button.setOnClickListener {
+            // Variabelen om bij te houden of de gebruiker is toegevoegd en of de gebruiker al bestaat
             var userAdded = false
             var userExists = false
             val password = passwordEncoder.encodePassword(password_input.text.toString())
+            // Gebruik coroutines om IO uit te voeren
             lifecycleScope.launch {
                 withContext(Dispatchers.IO) {
+                    // Controleer of de wachtwoorden overeenkomen en of de gebruiker al bestaat
                     if (password_input.text.toString() == password2_input.text.toString()) {
                         userExists = usersDao.userExists(username_input.text.toString())
                         if (!userExists) {
+                            // Voeg een nieuwe gebruiker toe aan de lokale database
                             val users = Users(0, username_input.text.toString(), password)
                             usersDao.insert(users)
                             userAdded = true
                         }
                     }
                 }
+                // Navigeer naar het CatalogFragment als de gebruiker is toegevoegd
                 if (userAdded) {
                     sharedViewModel.setUsername(username_input.text.toString())
                     sharedViewModel.setPassword(password)
@@ -79,6 +81,7 @@ class RegisterFragment : Fragment() {
         return rootView
     }
 
+    // Hulpmethode om een nieuw fragment te maken en weer te geven
     private fun createFragment(fragment: Fragment){
         val transaction = parentFragmentManager.beginTransaction()
         transaction.replace(R.id.fl_wrapper, fragment)
@@ -87,15 +90,6 @@ class RegisterFragment : Fragment() {
     }
 
     companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment RegisterFragment.
-         */
-        // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
             RegisterFragment().apply {

@@ -20,9 +20,11 @@ interface UsersDao {
     @Query("SELECT * FROM users LIMIT 1")
     fun getUsers(): Users
 
+    // Gebruikt om in te loggen op basis van de opgegeven gebruikersnaam en wachtwoord
     @Query("SELECT * FROM users WHERE username = :Username AND password = :Password LIMIT 1")
     fun logIn(Username: String, Password: String): Users
 
+    // Gebruikt om te controleren of een gebruiker met de opgegeven gebruikersnaam bestaat
     @Query("SELECT COUNT(*) > 0 FROM users WHERE username = :Username")
     fun userExists(Username: String): Boolean
 
