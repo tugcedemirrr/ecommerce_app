@@ -25,7 +25,7 @@
                 android:textStyle="bold"
                 android:padding="25sp"
                 android:textAlignment="center"
-                android:text="@string/catalog"
+                android:text="Catalog"
                 />
 
             <ScrollView
@@ -58,7 +58,7 @@
                             android:layout_height="wrap_content"
                             android:layout_toEndOf="@id/imageView"
                             android:layout_marginStart="16dp"
-                            android:text="@string/sweater"
+                            android:text="Product Title"
                             android:textAppearance="@style/TextAppearance.AppCompat.Large"/>
 
                         <Button
@@ -67,7 +67,7 @@
                             android:layout_height="wrap_content"
                             android:layout_below="@id/textViewTitle"
                             android:layout_alignStart="@id/textViewTitle"
-                            android:text="@string/add_to_favorites"/>
+                            android:text="Add to Favorites"/>
                     </LinearLayout>
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -86,18 +86,18 @@
                             android:id="@+id/textViewTitle1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_toEndOf="@id/imageView1"
+                            android:layout_toEndOf="@id/imageView"
                             android:layout_marginStart="16dp"
-                            android:text="@string/sweater2"
+                            android:text="Product Title"
                             android:textAppearance="@style/TextAppearance.AppCompat.Large"/>
 
                         <Button
                             android:id="@+id/buttonFavorite1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_below="@id/textViewTitle1"
-                            android:layout_alignStart="@id/textViewTitle1"
-                            android:text="@string/add_to_favorites"/>
+                            android:layout_below="@id/textViewTitle"
+                            android:layout_alignStart="@id/textViewTitle"
+                            android:text="Add to Favorites"/>
                     </LinearLayout>
                 </LinearLayout>
             </ScrollView>

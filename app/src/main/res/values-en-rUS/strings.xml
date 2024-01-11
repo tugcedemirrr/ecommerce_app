@@ -20,6 +20,5 @@
     <string name="add_to_favorites">Favorite</string>
     <string name="catalog">Catalog</string>
     <string name="home">Home</string>
-    <string name="favorite">Favorites</string>
-
+    <string name="favorite">Favorite</string>
 </resources>

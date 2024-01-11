@@ -16,4 +16,10 @@
     <string name="light_mode">Lichte Modus</string>
     <string name="dark_mode">Donkere Modus</string>
     <string name="log_out">Log Uit</string>
+    <string name="sweater">Trui 1</string>
+    <string name="sweater2">Trui 2</string>
+    <string name="add_to_favorites">Favoriet</string>
+    <string name="catalog">Catalogus</string>
+    <string name="home">Home</string>
+    <string name="favorite">Favorieten</string>
 </resources>
