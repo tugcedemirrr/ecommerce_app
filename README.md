@@ -12,7 +12,7 @@
 - Correcte toepassing van de navigation design patterns binnen Android
 - Ondersteuning voor minstens Engels en een andere taal naar keuze. Extra talen mogen voorzien, maar tellen niet voor extra punten.
 
-## Minimum requirements
+## Extra
 
 - Inloggen (checken of gebruiker bestaat)
 - Registreren (checken of gebruiker bestaat, checken of 2 wachtwoorden kloppen)
